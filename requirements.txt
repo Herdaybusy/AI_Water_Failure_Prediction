@@ -1,0 +1,12 @@
+pandas
+numpy
+pyyaml
+python-dotenv
+loguru
+scikit-learn
+xgboost
+matplotlib
+seaborn
+joblib
+pytest
+streamlit

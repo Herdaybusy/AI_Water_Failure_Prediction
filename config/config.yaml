@@ -1,0 +1,24 @@
+project:
+  name: AI Water Infrastructure Failure Prediction
+  version: 1.0.0
+
+
+data:
+  raw_file: data/raw/water_network_telemetry.csv
+  cleaned_file: data/cleaned/cleaned_water_network_telemetry.csv
+  processed_file: data/processed/processed_water_network_data.csv
+
+
+results:
+  folder: results
+
+
+model:
+  name: xgboost_failure_prediction
+  test_size: 0.2
+  random_state: 42
+
+
+logging:
+  folder: logs
+  level: INFO
