@@ -17,4 +17,6 @@ data/processed/
 models/*.pkl
 
 # Reports
+reports/figures/*.png
+reports/metrics/*.csv
 reports/*.png

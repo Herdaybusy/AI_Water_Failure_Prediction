@@ -1,0 +1,7 @@
+Water Failure Prediction Model Metrics
+
+accuracy: 0.999375
+precision: 0.9889349930843707
+recall: 0.9903047091412742
+f1_score: 0.9896193771626297
+roc_auc: 0.9992588974550413
