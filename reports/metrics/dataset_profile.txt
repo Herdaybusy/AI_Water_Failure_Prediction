@@ -1,0 +1,10 @@
+Water Network Dataset Profile
+
+Rows: 120000
+Columns: 17
+
+Failure Distribution
+failure_within_30_days
+0    116389
+1      3611
+Name: count, dtype: int64
