@@ -1,0 +1,22 @@
+WATER NETWORK DATA QUALITY REPORT
+=================================
+
+Total Records: 120000
+
+Missing Values:
+timestamp                    0
+asset_id                     0
+pressure_bar              2377
+flow_rate_lps             2371
+temperature_c             2400
+vibration_mm_s            2400
+turbidity_ntu             2400
+chlorine_mg_l             2400
+pump_runtime_hours           0
+maintenance_age_days         0
+failure_within_30_days       0
+leak_detected                0
+dtype: int64
+
+Anomalies:
+{'negative_pressure': np.int64(0), 'negative_flow': np.int64(0), 'high_vibration': np.int64(467), 'high_turbidity': np.int64(1776)}

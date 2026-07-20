@@ -1,0 +1,63 @@
+
+
+Water Network Telemetry Data Quality Report
+
+
+Dataset Information
+-------------------
+
+Rows:
+120000
+
+
+Columns:
+12
+
+
+Missing Values
+--------------
+
+chlorine_mg_l             2400
+turbidity_ntu             2400
+vibration_mm_s            2400
+temperature_c             2400
+pressure_bar              2377
+flow_rate_lps             2371
+timestamp                    0
+asset_id                     0
+pump_runtime_hours           0
+maintenance_age_days         0
+failure_within_30_days       0
+leak_detected                0
+dtype: int64
+
+
+Duplicate Records
+-----------------
+
+0
+
+
+Data Types
+----------
+
+timestamp                     str
+asset_id                      str
+pressure_bar              float64
+flow_rate_lps             float64
+temperature_c             float64
+vibration_mm_s            float64
+turbidity_ntu             float64
+chlorine_mg_l             float64
+pump_runtime_hours          int64
+maintenance_age_days        int64
+failure_within_30_days      int64
+leak_detected               int64
+dtype: object
+
+
+Sensor Validation
+-----------------
+
+{'pressure_bar_invalid': np.int64(0), 'flow_rate_invalid': np.int64(0), 'vibration_invalid': np.int64(1), 'turbidity_invalid': np.int64(9)}
+

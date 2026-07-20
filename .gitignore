@@ -9,6 +9,10 @@ __pycache__/
 logs/
 *.log
 
+# Notebook
+notebooks/
+*.note.ipynb
+
 # Generated data
 data/raw/
 data/processed/
@@ -16,7 +20,9 @@ data/processed/
 # Model outputs
 models/*.pkl
 
-# Reports
+# Generated figures
 reports/figures/*.png
-reports/metrics/*.csv
 reports/*.png
+
+# Temporary reports
+reports/metrics/*.csv
