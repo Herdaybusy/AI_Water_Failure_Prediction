@@ -1,6 +1,10 @@
 # Virtual environment
 .venv/
 
+# Environment variables / secrets
+.env
+.env.*
+
 # Python cache
 __pycache__/
 *.pyc
@@ -11,7 +15,6 @@ logs/
 
 # Notebook
 notebooks/
-*.note.ipynb
 
 # Generated data
 data/raw/
@@ -20,9 +23,20 @@ data/processed/
 # Model outputs
 models/*.pkl
 
+# Prediction outputs
+results/*.csv
+
 # Generated figures
 reports/figures/*.png
 reports/*.png
 
 # Temporary reports
 reports/metrics/*.csv
+
+# Power BI temporary files
+powerbi/*.pbix.autosave
+powerbi/~$*.pbix
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -30,8 +30,8 @@ logger = get_logger(__name__)
 
 # Input data
 INPUT_PATH = (
-    "data/"
-    "new_sensor_readings.csv"
+    "data/processed/"
+    "clean_water_network_data.csv"
 )
 
 # Model path
