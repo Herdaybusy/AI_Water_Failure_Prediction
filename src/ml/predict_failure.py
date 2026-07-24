@@ -289,9 +289,19 @@ def main():
             predictions
         )
 
-        save_predictions_to_postgres(
-            predictions
-        )
+
+        if os.getenv("DB_HOST"):
+
+            save_predictions_to_postgres(
+                predictions
+            )
+
+        else:
+
+            logger.info(
+                "Database credentials not found. Skipping PostgreSQL upload."
+            )
+
 
         logger.info(
             "Failure prediction pipeline completed successfully"
@@ -302,6 +312,7 @@ def main():
         logger.exception(
             f"Prediction pipeline failed: {error}"
         )
+
         raise
 
 

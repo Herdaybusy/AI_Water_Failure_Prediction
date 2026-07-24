@@ -5,7 +5,6 @@ This module validates prediction outputs
 generated from the trained model.
 """
 
-
 import os
 import sys
 import pandas as pd
@@ -25,12 +24,10 @@ sys.path.insert(
 )
 
 
-
 PREDICTION_PATH = (
     "results/"
     "predictions.csv"
 )
-
 
 
 def test_prediction_file_exists():
@@ -44,7 +41,6 @@ def test_prediction_file_exists():
     )
 
 
-
 def test_prediction_output_columns():
 
     """
@@ -55,7 +51,6 @@ def test_prediction_output_columns():
         PREDICTION_PATH
     )
 
-
     expected_columns = [
 
         "asset_id",
@@ -65,11 +60,9 @@ def test_prediction_output_columns():
 
     ]
 
-
     for column in expected_columns:
 
         assert column in df.columns
-
 
 
 def test_prediction_probability_range():
@@ -82,13 +75,11 @@ def test_prediction_probability_range():
         PREDICTION_PATH
     )
 
-
     assert (
         df["failure_probability"]
         .between(0, 1)
         .all()
     )
-
 
 
 def test_prediction_risk_levels():
@@ -101,7 +92,6 @@ def test_prediction_risk_levels():
         PREDICTION_PATH
     )
 
-
     valid_levels = [
 
         "LOW",
@@ -110,9 +100,25 @@ def test_prediction_risk_levels():
 
     ]
 
-
     assert (
         df["risk_level"]
         .isin(valid_levels)
+        .all()
+    )
+
+
+def test_prediction_recommendations_exist():
+
+    """
+    Validate maintenance recommendations are generated.
+    """
+
+    df = pd.read_csv(
+        PREDICTION_PATH
+    )
+
+    assert (
+        df["recommendation"]
+        .notna()
         .all()
     )
