@@ -11,6 +11,10 @@ import os
 import sys
 import pandas as pd
 import joblib
+from sqlalchemy import create_engine
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # project root to Python path
 PROJECT_ROOT = os.path.abspath(os.path.join(
@@ -41,6 +45,15 @@ OUTPUT_PATH = (
     "results/"
     "predictions.csv"
 )
+
+
+def get_db_engine():
+    # builds the connection string from env vars so credentials never hit the repo
+    conn_str = (
+        f"postgresql+psycopg2://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}"
+        f"@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
+    )
+    return create_engine(conn_str)
 
 
 def load_model():
@@ -227,6 +240,27 @@ def save_predictions(df):
         raise
 
 
+def save_predictions_to_postgres(df):
+    # keeps the CSV as-is for Power BI, this just also pushes to the db
+    try:
+        logger.info("Saving predictions to PostgreSQL")
+
+        engine = get_db_engine()
+
+        df.to_sql(
+            "predictions",
+            engine,
+            if_exists="append",   # matches the append behaviour we set up for the CSV
+            index=False
+        )
+
+        logger.info("Predictions saved to PostgreSQL successfully")
+
+    except Exception as error:
+        logger.exception(f"Failed saving predictions to PostgreSQL: {error}")
+        raise
+
+
 def main():
     # Execute failure prediction pipeline.
     try:
@@ -252,6 +286,10 @@ def main():
         )
 
         save_predictions(
+            predictions
+        )
+
+        save_predictions_to_postgres(
             predictions
         )
 

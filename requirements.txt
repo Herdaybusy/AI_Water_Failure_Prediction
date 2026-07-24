@@ -10,3 +10,6 @@ seaborn
 joblib
 pytest
 streamlit
+sqlalchemy
+psycopg2-binary
+shap
