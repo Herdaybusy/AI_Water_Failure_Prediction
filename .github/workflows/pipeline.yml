@@ -35,6 +35,11 @@ jobs:
           pip install -r requirements.txt
 
 
+      - name: Generate predictions
+        run: |
+          python src/ml/predict_failure.py
+
+
       - name: Run automated tests
         run: |
           pytest -v
